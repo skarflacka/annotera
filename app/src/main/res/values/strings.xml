@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Annotera</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="drawer_list_content">
+        <item>Profile</item>
+        <item>Timeline</item>
+        <item>Schedule</item>
+    </string-array>
+
+</resources>

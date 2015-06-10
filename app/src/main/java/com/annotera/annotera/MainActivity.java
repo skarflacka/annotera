@@ -28,13 +28,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Toolbar set
         material_toolbar = (Toolbar) findViewById(R.id.material_toolbar);
         setSupportActionBar(material_toolbar);
+        material_toolbar.setTitleTextColor(0xFF2196F3);
 
-
+        //DrawerLayout set
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
         mDrawerListContent = getResources().getStringArray(R.array.drawer_list_content);
+
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,

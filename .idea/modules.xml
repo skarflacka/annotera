@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Annotera.iml" filepath="$PROJECT_DIR$/Annotera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/annotera.iml" filepath="$PROJECT_DIR$/annotera.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
-

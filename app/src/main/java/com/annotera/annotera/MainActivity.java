@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar material_toolbar;
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private String[] mDataset;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         //Toolbar set
         material_toolbar = (Toolbar) findViewById(R.id.material_toolbar);
         setSupportActionBar(material_toolbar);
+        getSupportActionBar().setTitle(R.string.app_name);
         material_toolbar.setTitleTextColor(0xFF2196F3);
+
 
         //DrawerLayout set
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -43,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 this,
                 mDrawerLayout,
                 material_toolbar,
-                R.string.hello_world,
-                R.string.hello_world)
+                R.string.drawer_open,
+                R.string.drawer_close)
         {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
@@ -64,9 +73,22 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_single_choice, mDrawerListContent));
 
-        mDrawerList.setOnItemClickListener(null);
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
+        //Get dataset
+        mDataset = getResources().getStringArray(R.array.drawer_list_content);
 
+        mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new RecyclerCardAdapter(mDataset);
+        mRecyclerView.setAdapter(mAdapter);
 
     }
 
